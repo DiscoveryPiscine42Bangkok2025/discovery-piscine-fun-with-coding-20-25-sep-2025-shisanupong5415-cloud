@@ -1,0 +1,1 @@
+"echo Z > cell00/ex01/z
