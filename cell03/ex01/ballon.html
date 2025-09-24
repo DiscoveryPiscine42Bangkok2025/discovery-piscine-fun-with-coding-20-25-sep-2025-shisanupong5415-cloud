@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Balloon</title>
+<style>
+  body{
+    height:100vh; display:grid; place-items:center; margin:0;
+    font-family: system-ui, sans-serif;
+    background:#f7f7f7;
+  }
+  #balloon{
+    width:200px; height:200px; 
+    border-radius:50%;              /* ให้เป็นวงกลมตลอด */
+    background:red;                 /* สีเริ่มต้น */
+    box-shadow: 0 6px 18px rgba(0,0,0,.15);
+    cursor:pointer;
+    transition: width .08s, height .08s, background .08s;
+    user-select:none;
+  }
+</style>
+</head>
+<body>
+  <div id="balloon" aria-label="balloon"></div>
+
+<script>
+  const balloon = document.getElementById('balloon');
+
+  const MIN = 200;         // px
+  const STEP_CLICK = 10;   // โตเมื่อคลิก
+  const STEP_LEAVE = 5;    // เล็กลงเมื่อ mouseleave
+  const BURST_AT = 420;    // ถ้า > ค่านี้ ให้ “ระเบิด”
+  const COLORS = ['red', 'green', 'blue']; // วนสี R->G->B->R …
+
+  let size = MIN;
+  let cidx = 0; // index สีปัจจุบันใน COLORS
+
+  function apply() {
+    balloon.style.width = size + 'px';
+    balloon.style.height = size + 'px';
+    balloon.style.background = COLORS[cidx];
+  }
+
+  function nextColor() {
+    cidx = (cidx + 1) % COLORS.length;
+  }
+  function prevColor() {
+    cidx = (cidx - 1 + COLORS.length) % COLORS.length;
+  }
+
+  // คลิก: ขยาย +10 และเปลี่ยนสีไปข้างหน้า
+  balloon.addEventListener('click', () => {
+    size += STEP_CLICK;
+    nextColor();
+
+    // ระเบิดถ้าเกิน 420px -> กลับสภาพเดิม (200px, สีแดง)
+    if (size > BURST_AT) {
+      size = MIN;
+      cidx = 0; // red
+    }
+    apply();
+  });
+
+  // เมื่อเมาส์ออกจากบอลลูน: หด -5 (ไม่น้อยกว่า 200) และเปลี่ยนสีถอยหลัง
+  balloon.addEventListener('mouseleave', () => {
+    size = Math.max(MIN, size - STEP_LEAVE);
+    prevColor();
+    apply();
+  });
+
+  apply(); // วาดครั้งแรก
+</script>
+</body>
+</html>
