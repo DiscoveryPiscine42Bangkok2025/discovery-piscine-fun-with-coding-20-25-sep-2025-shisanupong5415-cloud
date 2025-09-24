@@ -1,0 +1,257 @@
+/* ===== RESET / BASE ===== */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: Arial, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto;
+    color: #0f172a;
+    /* main text */
+}
+
+body {
+    background: #f8fafc;
+    /* page background */
+}
+
+/* ===== NAVBAR (light, fixed) ===== */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255, 255, 255, .88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.nav nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    height: 60px;
+    /* navbar height */
+    padding: 0 16px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav a {
+    color: #0f172a;
+    text-decoration: none;
+    opacity: .9;
+}
+
+.nav a:hover {
+    color: #0ea5e9;
+    opacity: 1;
+}
+
+/* ===== HERO (same structure, light vibe) ===== */
+.hero {
+    position: relative;
+    min-height: calc(100vh - 60px);
+    /* full view minus navbar */
+    margin-top: 60px;
+    /* keep content clear of navbar */
+    display: grid;
+    place-items: center;
+    text-align: center;
+    overflow: hidden;
+    background: radial-gradient(800px 600px at 80% -10%, #e2e8f0 0%, transparent 60%);
+}
+
+/* softened background blobs */
+.bg-layer {
+    position: absolute;
+    inset: -20% -20%;
+    background:
+        radial-gradient(35% 35% at 20% 30%, rgba(2, 6, 23, .06) 0%, rgba(2, 6, 23, 0) 60%),
+        radial-gradient(35% 35% at 80% 20%, rgba(14, 165, 233, .10) 0%, rgba(14, 165, 233, 0) 60%),
+        radial-gradient(40% 40% at 60% 80%, rgba(99, 102, 241, .08) 0%, rgba(99, 102, 241, 0) 60%);
+    filter: blur(24px) saturate(120%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ===== CARD (hero & experience items) ===== */
+.card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(2, 6, 23, .08);
+    padding: 1.5rem 1.5rem 2rem;
+    width: clamp(320px, 70vw, 640px);
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* avatar (if/when you add back an image) */
+.avatar {
+    display: block;
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid rgba(2, 6, 23, .08);
+    box-shadow: 0 6px 18px rgba(2, 6, 23, .12);
+    margin: -90px auto 12px;
+    /* pop above card */
+}
+
+/* hero texts */
+.card h1 {
+    margin: 0 0 .5rem;
+    font-size: 2.3rem;
+    letter-spacing: .5px;
+    word-spacing: 2px;
+}
+
+.card h4 {
+    margin: .25rem 0;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.tagline {
+    margin-bottom: 1rem;
+    color: #475569;
+}
+
+/* buttons */
+.links {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.links a {
+    display: inline-block;
+    padding: .6rem 1rem;
+    border-radius: 999px;
+    background: #0ea5e9;
+    /* accent */
+    color: #002133;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 3px 10px rgba(2, 6, 23, .12);
+    transition: filter .2s, transform .2s;
+}
+
+.links a:hover {
+    filter: brightness(1.05);
+    transform: translateY(-2px);
+}
+
+/* ===== DIVIDER ===== */
+.divider {
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+    margin: 0;
+}
+
+/* ===== EXPERIENCE / SKILLS ===== */
+.showcase {
+    text-align: center;
+    padding: 64px 16px;
+}
+
+.showcase h2 {
+    margin: 0 0 18px;
+    font-size: 1.8rem;
+}
+
+.exp-text {
+    margin-top: 16px;
+}
+
+.skl-text {
+    margin-top: 36px;
+}
+
+.cards {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    max-width: 1000px;
+    margin: 0 auto 3rem;
+}
+
+.exp-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 1.25rem;
+    box-shadow: 0 10px 30px rgba(2, 6, 23, .08);
+    text-align: left;
+}
+
+.exp-card h3 {
+    margin: 0 0 6px;
+    color: #0ea5e9;
+}
+
+/* ===== CONTACT (simple links) ===== */
+.contact {
+    padding: 64px 16px;
+    text-align: center;
+}
+
+.contact h2 {
+    margin-bottom: 18px;
+    font-size: 1.8rem;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.contact-links a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #0f172a;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 10px 30px rgba(2, 6, 23, .08);
+    transition: background .2s, transform .2s;
+}
+
+.contact-links a:hover {
+    background: #e6f6fe;
+    transform: translateY(-2px);
+}
+
+.icon-img {
+    width: 20px;
+    height: 20px;
+}
+
+/* anchors present in your HTML; spacing handled above */
+#about,
+#Showcase,
+#contact {
+    text-align: center;
+    padding: 0;
+}

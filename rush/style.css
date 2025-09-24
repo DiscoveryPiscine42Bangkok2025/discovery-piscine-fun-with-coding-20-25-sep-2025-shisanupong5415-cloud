@@ -80,9 +80,9 @@ img {
 
 /* รูปใหญ่ในกล่อง */
 .info-img {
-  width: 500px;
+  width: 400px;
   height: 500px;
-  object-fit: none;
+  object-fit: cover;
   border-radius: 8px;
   margin-bottom: 10px;
 }
@@ -96,11 +96,11 @@ img {
 
 /* จัดตำแหน่งกล่อง */
 .card.left .info-box {
-  left: -500px;   /* โผล่ทางซ้ายของรูป */
+  left: -600px;   /* โผล่ทางซ้ายของรูป */
 }
 
 .card.right .info-box {
-  right: -500px;  /* โผล่ทางขวาของรูป */
+  right: -600px;  /* โผล่ทางขวาของรูป */
 }
 
 .page-title {
