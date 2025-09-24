@@ -1,0 +1,141 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;    
+  overflow: hidden;
+  position: relative;
+}
+
+
+/* พื้นหลังแบบ GIF ที่เบลอ */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://i.pinimg.com/originals/4e/37/12/4e3712a13bb5493898c2cf73a7644ac6.gif") no-repeat center center;
+  background-size: cover;
+  filter: blur(0.1px);
+  z-index: -1;
+}
+
+/* จัดการเนื้อหาให้อยู่ด้านหน้า */
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 50px; 
+}
+
+img {
+  width: 200px;
+  margin: 0 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Hover รูปภาพ */
+.hover-img {
+  width: 150px;
+  height: 150px;       
+  object-fit: cover; 
+  margin: 0 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* เวลา hover */
+.hover-img:hover {
+  transform: scale(1.1); /* ขยายเล็กน้อย */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Navigation Bar */
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background: rgba(0, 0, 0, 0.5); /* โปร่งใสหน่อยเพื่อเห็นพื้นหลัง */
+  color: white;
+  z-index: 2; /* อยู่เหนือพื้นหลังและ content */
+}
+
+/* Logo เล็ก */
+.logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 50%; /* ทำให้เป็นวงกลม */
+}
+
+/* ข้อความ Profile */
+.nav-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 600;  
+  line-height: 1.5em; 
+  text-align: center;
+  letter-spacing: 2px; 
+}
+
+
+/* ครอบรูปแต่ละอัน */
+.card {
+  position: relative;
+  display: inline-block;
+  margin: 0 20px;
+}
+
+/* กล่องข้อมูล (ซ่อนอยู่ก่อน) */
+.info-box {
+  position: absolute;
+  top: 100%;
+  transform: translateY(-50%) scale(0.8);
+  width: 220px;
+  background: rgba(255,255,255,0.95);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* รูปใหญ่ในกล่อง */
+.info-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Hover card → โชว์กล่อง */
+.card:hover .info-box {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+  pointer-events: auto;
+}
+
+/* จัดตำแหน่งกล่อง */
+.card.left .info-box {
+  left: -500px;   /* โผล่ทางซ้ายของรูป */
+  transform: translateY(-10%) scale(0.8);
+}
+
+.card.right .info-box {
+  right: -500px;  /* โผล่ทางขวาของรูป */
+}
